@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amora Creations</title>
+    <style>
+     /* Global Styles */
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f7f3e9;
+        }
+        
+        
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(212, 175, 55, 0.9);
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav h1 {
+            color: white;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Carousel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* Product Section */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+        }
+
+        .product {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-5px);
+        }
+
+        .product img {
+            width: 100%;
+            border-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Info Sections */
+        .info-box {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <h1>Amora Creation</h1>     
+        <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./product.html">Product</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+            <li><a href="./payment.html">Payment</a></li>
+            <li><a href="./cart.html" id="cart">Cart (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Carousel -->
+    <div class="carousel">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1600');">
+            <h2 class="title">Unique & Handmade Jewelry</h2>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&q=80&w=1600');">
+            <h2 class="title">Elegant & Timeless Designs</h2>
+        </div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1603974372039-adc49044b6bd?auto=format&fit=crop&q=80&w=1600');">
+            <h2 class="title">Crafted with Love & Passion</h2>
+        </div>
+    </div>
+
+    <!-- Product Categories -->
+    <section id="categories">
+        <h2>Our Collection</h2>
+        <div class="products">
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600" alt="Handmade Necklace">
+                <h3>Handmade Necklace</h3>
+                <p>$79.99</p>
+                <button onclick="addToCart('1', 'Handmade Necklace', 79.99, 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=600')">Add to Cart</button>
+                <button>Wishlist</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&q=80&w=600" alt="Beaded Bracelet">
+                <h3>Beaded Bracelet</h3>
+                <p>$49.99</p>
+                <button onclick="addToCart('2', 'Beaded Bracelet', 49.99, 'https://images.unsplash.com/photo-1611085583191-a3b181a88401?auto=format&fit=crop&q=80&w=600')">Add to Cart</button>
+                <button>Wishlist</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1603974372039-adc49044b6bd?auto=format&fit=crop&q=80&w=600" alt="Pearl Necklace">
+                <h3>Pearl Necklace</h3>
+                <p>$59.99</p>
+                <button onclick="addToCart('3', 'Pearl Necklace', 59.99, 'https://images.unsplash.com/photo-1603974372039-adc49044b6bd?auto=format&fit=crop&q=80&w=600')">Add to Cart</button>
+                <button>Wishlist</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=600" alt="Gemstone Ring">
+                <h3>Gemstone Ring</h3>
+                <p>$89.99</p>
+                <button onclick="addToCart('4', 'Gemstone Ring', 89.99, 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=600')">Add to Cart</button>
+                <button>Wishlist</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&q=80&w=600" alt="Diamond Bracelet">
+                <h3>Diamond Bracelet</h3>
+                <p>$89.99</p>
+                <button onclick="addToCart('5', 'Diamond Bracelet', 89.99, 'https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?auto=format&fit=crop&q=80&w=600')">Add to Cart</button>
+                <button>Wishlist</button>
+            </div>
+            <div class="product">
+                <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=600" alt="Anklet">
+                <h3>Anklet</h3>
+                <p>$89.99</p>
+                <button onclick="addToCart('6', 'Anklet', 89.99, 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&q=80&w=600')">Add to Cart</button>
+                <button>Wishlist</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="index.js"></script>
+</body>
+</html>
